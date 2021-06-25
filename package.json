@@ -1,0 +1,19 @@
+{
+  "name": "krida",
+  "version": "0.0.1",
+  "description": "game engine written from scratch",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ani1998ket/Krida.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ani1998ket/Krida/issues"
+  },
+  "homepage": "https://github.com/ani1998ket/Krida#readme"
+}
