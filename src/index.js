@@ -42,6 +42,8 @@ export default class Engine {
 
   render() {
     if( this.canvas == null ) return;
+
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height )
     if (this.currentScene)
       this.currentScene.render(this.ctx)
   }
