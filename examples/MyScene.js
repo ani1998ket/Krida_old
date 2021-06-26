@@ -1,13 +1,14 @@
-import Scene from "../src/Scene";
+import Scene from "../src/Scene.js";
 
 export default class MyScene extends Scene{
   constructor(){
-    this.x = 0
-    this.y = 0
+    super()
+    this.x = 50
+    this.y = 50
   }
   update(dt){
     this.x += 100 * dt
-    this.y += 10 * dt
+    this.x %= 300
   }
   render(ctx){
     ctx.fillRect( this.x, this.y, 40, 40 )
