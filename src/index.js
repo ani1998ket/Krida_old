@@ -1,25 +1,27 @@
-import Scene from "./Scene.js"
-
 export default class Engine {
-  setCanvas(canvas) {
-    this.canvas = canvas
-    this.ctx = canvas.getContext("2d")
+  constructor(){
     this.currentScene = null
     this.lastFrameTime = null
   }
+  
+  setCanvas(canvas) {
+    this.canvas = canvas
+    this.ctx = canvas.getContext("2d")
+  }
+
+  setScene( scene ){
+    this.currentScene = scene
+  }
 
   start() {
-    this.currentScene = new Scene( this.canvas, this.ctx )
     this.requestID = window.requestAnimationFrame((timestep) => {
       this.lastFrameTime = timestep
       let dt = timestep - this.lastFrameTime
       this.gameloop(dt / 1000)
     })
-
   }
 
   stop() {
-    this.currentScene = null
     window.cancelAnimationFrame(this.requestID);
   }
 
@@ -34,15 +36,12 @@ export default class Engine {
   }
 
   update(dt) {
-    if (this.currentScene)
+    if (this.canvas && this.currentScene)
       this.currentScene.update(dt)
   }
+
   render() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-    this.ctx.save()
-    this.ctx.fillStyle = 'grey'
-    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
-    this.ctx.restore()
+    if( this.canvas == null ) return;
     if (this.currentScene)
       this.currentScene.render(this.ctx)
   }
