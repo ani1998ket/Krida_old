@@ -1,16 +1,26 @@
 import Scene from "../src/Scene.js";
+import GameObject from "../src/GameObject.js";
+import { Vector2 } from "../src/Math.js";
+
+const GRAVITY = new Vector2( 0, 100 )
 
 export default class MyScene extends Scene{
   constructor(){
     super()
-    this.x = 50
-    this.y = 50
+    this.player = new GameObject();
+    this.player.setPosition(10, 10);
+    this.player.setVelocity(100, 0);
+    this.player.acceleration = GRAVITY;
   }
   update(dt){
-    this.x += 100 * dt
-    this.x %= 300
+    this.player.update( dt )
+    if( this.player.position.y > 140 && this.player.velocity.y > 0 ){
+      this.player.position.y = 140;
+      this.player.velocity.y *= -0.90;
+    }
+    this.player.position.x %= 300;
   }
   render(ctx){
-    ctx.fillRect( this.x, this.y, 40, 40 )
+    this.player.render( ctx )
   }
 }
