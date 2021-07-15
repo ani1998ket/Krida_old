@@ -1,17 +1,18 @@
-import Scene from "../src/Scene.js";
-import GameObject from "../src/GameObject.js";
-import { Vector2 } from "../src/Math.js";
-import InputManager from "../src/InputManager.js";
+import * as Krida from "../src/Krida.js";
 
-const GRAVITY = new Vector2( 0, 100 )
+const InputManager = Krida.InputManager;
 
-export default class MyScene extends Scene{
+const GRAVITY = new Krida.Vector2( 0, 100 )
+
+export default class MyScene extends Krida.Scene{
+  
   constructor(){
     super()
-    this.player = new GameObject();
+    this.player = new Krida.GameObject();
     this.player.setPosition(10, 10);
     this.player.acceleration = GRAVITY;
   }
+
   update(dt){
     
     this.player.velocity.x = 0;
