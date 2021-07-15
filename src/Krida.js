@@ -1,11 +1,11 @@
-import Scene from "./Scene.js";
-export {Scene};
+import Engine from "./Engine.js"
+import Scene from "./Scene.js"
+import GameObject from "./GameObject.js"
+import InputManager from "./InputManager.js"
+import { Vector2 } from "./Math.js"
 
-import GameObject from "./GameObject.js";
-export {GameObject};
+let Krida = {}
 
-import { Vector2 } from "./Math.js";
-export {Vector2};
-
-import InputManager from "./InputManager.js";
-export {InputManager}
+export default Krida = {
+    Engine, Scene, GameObject, InputManager, Vector2
+};
