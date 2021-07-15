@@ -1,13 +1,15 @@
-//importing the Krida library
-import Krida from "../../src/Krida.js"
+// importing the Krida library
+import Krida from "../../src/Krida.js";
 
-//importing custom scene
-import MyScene from "./MyScene.js"
+// importing custom scene
+import MyScene from "./MyScene.js";
 
-let canvas = document.getElementById("canvas")
-let engine = new Krida.Engine()
-engine.setCanvas( canvas )
+// setting up the engine
+let canvas = document.getElementById("canvas");
+let engine = new Krida.Engine();
+engine.setCanvas(canvas);
 
-engine.setScene( new MyScene() )
+// sets the current scene
+engine.setScene(new MyScene());
 
-engine.start()
+engine.start();

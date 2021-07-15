@@ -1,10 +1,7 @@
-export default class Scene{
-  constructor(){
-  }
+export default class Scene {
+  constructor() {}
 
-  update( dt ){
-  }
-  
-  render( ctx ){
-  }
+  update(dt) {}
+
+  render(ctx) {}
 }
