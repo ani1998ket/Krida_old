@@ -28,18 +28,32 @@ export default class MyScene extends Krida.Scene {
     ) {
       this.player.velocity.x -= 100;
     }
+    //Jump
+    if (
+      InputManager.getKeyPress("ArrowUp") ||
+      InputManager.getKeyPress(" ")
+    ) {
+      this.player.velocity.y -= 3;
+    }
 
     // Applies physics to the player object
     this.player.update(dt);
 
     // Prevents player from going down the screen
-    if (this.player.position.y > 140) this.player.position.y = 140;
+    if (this.player.position.y > 140) {
+      this.player.position.y = 140;
+      this.player.setVelocity(0, 0);
+    }
 
     // Contains the player within X - bounds of canvas
-    this.player.position.x %= 300;
+    this.player.position.x = mod2( this.player.position.x, 300 );
   }
 
   render(ctx) {
     this.player.render(ctx);
   }
+}
+
+function mod2( a, b ){
+  return ((a % b) + b ) % b;
 }
