@@ -1,5 +1,4 @@
 import * as Krida from "../src/Krida.js";
-
 const InputManager = Krida.InputManager;
 
 const GRAVITY = new Krida.Vector2( 0, 100 )
