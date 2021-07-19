@@ -7,9 +7,13 @@ export default class MyScene extends Krida.Scene {
 
     this.GRAVITY = new Krida.Vector2(0, 100);
 
-    this.player = new Krida.GameObject();
-    this.player.setPosition(10, 10);
-    this.player.acceleration = this.GRAVITY;
+    // adds player object to the scene
+    this.addGameObject( "player", new Krida.GameObject() );
+
+    //reference to the player object
+    let player = this.getGameObject("player");
+    player.setPosition(10, 10);
+    player.acceleration = this.GRAVITY;
 
     if( Krida.StorageManager.get("visited") == null ){
       Krida.StorageManager.set("visited", 0);
@@ -19,44 +23,45 @@ export default class MyScene extends Krida.Scene {
   }
 
   update(dt) {
-    this.player.velocity.x = 0;
+    let player = this.getGameObject("player");
+
+    player.velocity.x = 0;
 
     // Moves the player based on input
     if (
       InputManager.getKeyPress("ArrowRight") ||
       InputManager.getKeyPress("d")
     ) {
-      this.player.velocity.x += 100;
+      player.velocity.x += 100;
     }
     if (
       InputManager.getKeyPress("ArrowLeft") ||
       InputManager.getKeyPress("a")
     ) {
-      this.player.velocity.x -= 100;
+      player.velocity.x -= 100;
     }
     //Jump
     if (
       InputManager.getKeyPress("ArrowUp") ||
       InputManager.getKeyPress(" ")
     ) {
-      this.player.velocity.y -= 3;
+      player.velocity.y -= 3;
     }
 
-    // Applies physics to the player object
-    this.player.update(dt);
+    super.update(dt);
 
     // Prevents player from going down the screen
-    if (this.player.position.y > 140) {
-      this.player.position.y = 140;
-      this.player.setVelocity(0, 0);
+    if (player.position.y > 140) {
+      player.position.y = 140;
+      player.setVelocity(0, 0);
     }
 
     // Contains the player within X - bounds of canvas
-    this.player.position.x = mod2( this.player.position.x, 300 );
+    player.position.x = mod2( player.position.x, 300 );
   }
 
   render(ctx) {
-    this.player.render(ctx);
+    super.render( ctx );
     ctx.fillText("Visited: " + Krida.StorageManager.get("visited"), 10, 10);
   }
 }
