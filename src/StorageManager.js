@@ -1,4 +1,4 @@
-class LocalStore {
+class StorageManager {
     constructor() {
     }
   
@@ -23,7 +23,7 @@ class LocalStore {
     }
   }
   
-  let localstore = new LocalStore();
+  let storageManager = new StorageManager();
   
-  export default localstore;
+  export default storageManager;
   
