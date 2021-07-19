@@ -10,6 +10,12 @@ export default class MyScene extends Krida.Scene {
     this.player = new Krida.GameObject();
     this.player.setPosition(10, 10);
     this.player.acceleration = this.GRAVITY;
+    
+    if( Krida.LocalStore.get("visited") == null ){
+      Krida.LocalStore.set("visited", 0);
+    }
+    let val = parseInt(Krida.LocalStore.get("visited")) + 1;
+    Krida.LocalStore.set("visited", val.toString() );
   }
 
   update(dt) {
@@ -51,6 +57,7 @@ export default class MyScene extends Krida.Scene {
 
   render(ctx) {
     this.player.render(ctx);
+    ctx.fillText("Visited: " + Krida.LocalStore.get("visited"), 10, 10);
   }
 }
 
