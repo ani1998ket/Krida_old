@@ -1,12 +1,16 @@
+import Renderer from "./Renderer.js";
+
 export default class Engine {
   constructor() {
     this.currentScene = null;
     this.lastFrameTime = null;
+    this.renderer = new Renderer(null);
   }
 
   setCanvas(canvas) {
     this.canvas = canvas;
-    this.ctx = canvas.getContext("2d");
+    // Add a method
+    this.renderer.canvas = canvas;
   }
 
   setScene(scene) {
@@ -42,7 +46,7 @@ export default class Engine {
   render() {
     if (this.canvas == null) return;
 
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    if (this.currentScene) this.currentScene.render(this.ctx);
+    this.renderer.clear();
+    if (this.currentScene) this.renderer.render(this.currentScene);
   }
 }

@@ -21,10 +21,4 @@ export default class GameObject {
     this.position = this.position.add(dv);
     this.velocity = this.velocity.add(da);
   }
-
-  render(ctx) {
-    ctx.save();
-    ctx.fillRect(this.position.x, this.position.y, 10, 10);
-    ctx.restore();
-  }
 }

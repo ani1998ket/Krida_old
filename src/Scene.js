@@ -9,12 +9,6 @@ export default class Scene {
     }
   }
 
-  render(ctx) {
-    for( let key in this.gameObjects ){
-      this.gameObjects[key].render( ctx );
-    }
-  }
-
   addGameObject( key, instance ){
     this.gameObjects[key] = instance;
   }

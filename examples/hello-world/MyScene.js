@@ -20,9 +20,4 @@ export default class MyScene extends Krida.Scene {
   update(dt) {
     super.update(dt);
   }
-
-  render(ctx) {
-    super.render( ctx );
-    ctx.fillText("Visited: " + Krida.StorageManager.get("visited"), 10, 10);
-  }
 }
